@@ -30,6 +30,12 @@ body {
   max-width: 100vw;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 .logo {
   height: 4rem;
   position: relative;
@@ -54,6 +60,12 @@ h1 {
   position: relative;
   z-index: 2;
   margin: 0 0.5rem 0 0.5rem;
+}
+
+.title__number{
+  color: var(--color-blue);
+  font-size: 7rem;
+  line-height: 0.8;
 }
 
 .intro__title {
@@ -85,10 +97,12 @@ h1 {
 }
 
 .intro__pattern {
-  width: 140vw;
-  height: 9rem;
-  object-fit: cover;
-  display: block;
+  width: 100%;
+  height: 10rem;
+  background-image: url("./assets/pattern1.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   position: relative;
   z-index: 0;
 }
@@ -112,18 +126,112 @@ p {
   margin-top: 2rem;
 }
 
-.soldier{
+.soldier {
   background-color: var(--color-black);
   color: var(--color-white);
 }
 
-h2{
+h2 {
+  font-family: komu-b, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+  font-size: 3rem;
+  margin: 0 0.5rem 0 0.5rem;
+}
+
+.soldier>h2{
+  position: absolute;
+}
+
+.soldier__images {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: end;
+}
+
+.war__images {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+h3 {
   font-family: komu-b, sans-serif;
   font-weight: 400;
   font-style: normal;
 
   font-size: 2rem;
+  margin: 0.5rem;
 }
+
+.boots {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.boots > img {
+  margin-bottom: 1rem;
+}
+
+.fightclub {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: end;
+}
+
+.fighter > p {
+  margin-top: 2rem;
+}
+
+.athlete h2 {
+  color: var(--color-white);
+  align-self: center;
+  justify-self: end;
+  padding-right: 0.25rem;
+  padding-top: 3.5rem;
+}
+
+.athlete__grid {
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+.athlete__grid > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.athlete__grid > div > * {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.athlete__soccer>img{
+  width: 75%;
+  justify-self: end;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 
 #app {
   max-width: 1280px;
