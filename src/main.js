@@ -1,26 +1,36 @@
-// import './style.css'
-// import javascriptLogo from './javascript.svg'
-// import viteLogo from '/vite.svg'
-// import { setupCounter } from './counter.js'
+import { gsap } from "gsap";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// document.querySelector('#app').innerHTML = `
-//   <div>
-//     <a href="https://vite.dev" target="_blank">
-//       <img src="${viteLogo}" class="logo" alt="Vite logo" />
-//     </a>
-//     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-//       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-//     </a>
-//     <h1>Hello Vite!</h1>
-//     <div class="card">
-//       <button id="counter" type="button"></button>
-//     </div>
-//     <p class="read-the-docs">
-//       Click on the Vite logo to learn more
-//     </p>
-//   </div>
-// `
+gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger);
 
-// setupCounter(document.querySelector('#counter'))
+const init = () => {
+  const lacesPath = document.querySelector(".laces__path");
+  const whiteRings = document.querySelector(".soccer__white-rings");
 
+  // Set initial state - path is not drawn
+  gsap.set(lacesPath, { drawSVG: "0%" });
 
+  // Create the yoyo animation for laces
+  gsap.to(lacesPath, {
+    drawSVG: "100%",
+    duration: 7,
+    ease: "power2.inOut",
+    repeat: -1,
+    yoyo: true,
+  });
+
+  // White rings rotation on scroll
+  gsap.to(whiteRings, {
+    rotation: 360,
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".soccer__rings-wrapper",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true,
+    },
+  });
+};
+
+init();

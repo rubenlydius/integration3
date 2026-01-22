@@ -2,12 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <link rel="stylesheet" href="https://use.typekit.net/mok6hiq.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="./src/reset.css">
     <link rel="stylesheet" href="./src/style.css">
-    <title>int3</title>
+    <title>Dirk Bikkembergs</title>
   </head>
   <body>
     
@@ -60,7 +61,12 @@
               mountain boots for the city were deeply rooted in the functional shapes of skiing and mountaineering gear. For
               Bikkembergs, the military wasn't about war—it was the truth of practical design.</p>
             </div>
-          <img class="boots__image" src="./src/assets/boots.png" alt="boots">
+          <div class="boots__image-wrapper">
+            <img class="boots__image" src="./src/assets/boots.png" alt="boots">
+            <svg class="laces" width="195" height="263" viewBox="0 0 195 263" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path class="laces__path" d="M75.1924 260.084C136.692 171.584 186.692 95.5836 186.192 78.5836C185.692 61.5836 207.192 15.5837 141.192 19.0837C75.1924 22.5837 4.1924 36.0836 29.6924 73.0836C55.1924 110.084 82.1925 106.084 103.192 131.584C124.192 157.084 157.192 253.084 175.692 249.084C194.192 245.084 188.013 204.584 155.692 197.084C123.372 189.584 15.6925 143.584 8.19248 131.584C0.692475 119.584 6.69248 95.5836 23.1925 87.0836C39.6925 78.5837 142.694 57.5836 155.692 51.0836C168.691 44.5836 196.692 37.0836 186.192 24.5836C175.692 12.0836 131.191 4.08363 119.191 5.08363C107.191 6.08363 21.6934 6.58374 29.6924 31.0837C37.6914 55.5837 84.6914 96.5835 85.1914 131.584" stroke="#0745B0" stroke-width="10"/>
+            </svg>
+          </div>
         </div>
       </section>
       <section class="fighter">
@@ -91,7 +97,7 @@
             famously calling professional fashion models "dead meat”.</p>
           </div>
         <div class="athlete__soccer">
-          <div>
+          <div class="athlete__soccer__text">
           <div>
             <h3>San Siro</h3>
             <p>In June 2001, he took the international fashion elite to Milan’s San Siro football stadium, becoming the first designer
@@ -113,7 +119,10 @@
             like Giorgio Chiellini.</p>
           </div>
         </div>
-        <img src="./src/assets/soccer_blue_rings.png" alt="blue football rings graphic">
+        <div class="soccer__rings-wrapper">
+          <img class="soccer__white-rings" src="./src/assets/soccer_white_rings.png" alt="white football rings graphic">
+          <img class="soccer__blue-rings" src="./src/assets/soccer_blue_rings.png" alt="blue football rings graphic">
+        </div>
         </div>
       </section>
       <section class="individual">
