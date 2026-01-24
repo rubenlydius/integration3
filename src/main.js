@@ -324,31 +324,17 @@ const init = () => {
       linesClass: "line",
       autoSplit: true,
       onSplit: (instance) => {
-        // First paragraph: animate in (from below)
-        // Second paragraph: animate out (to below)
-        if (index === 0) {
-          gsap.from(instance.lines, {
-            yPercent: 120,
-            stagger: 0.1,
-            scrollTrigger: {
-              trigger: paragraph,
-              scrub: true,
-              start: "clamp(top center)",
-              end: "clamp(bottom center)",
-            },
-          });
-        } else {
-          gsap.to(instance.lines, {
-            yPercent: 120,
-            stagger: 0.1,
-            scrollTrigger: {
-              trigger: paragraph,
-              scrub: true,
-              start: "clamp(top center)",
-              end: "clamp(bottom center)",
-            },
-          });
-        }
+        // Both paragraphs: animate in (from below)
+        gsap.from(instance.lines, {
+          yPercent: 120,
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: paragraph,
+            scrub: true,
+            start: "clamp(top center)",
+            end: "clamp(bottom center)",
+          },
+        });
       },
     });
   });

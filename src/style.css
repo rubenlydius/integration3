@@ -127,13 +127,27 @@ h1 {
 .intro__pattern {
   width: 100%;
   height: 30vw;
-  background-image: url("./assets/pattern1.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
   position: relative;
   z-index: 0;
   margin-top: -19.5vw;
+  overflow: hidden;
+  /* Clip the fixed background to this container */
+  clip-path: inset(0);
+  -webkit-clip-path: inset(0);
+}
+
+/* Pattern background with fixed effect - iOS compatible */
+.intro__pattern::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url("./assets/pattern1.png");
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
 }
 
 .intro__text__bottom {
@@ -430,7 +444,7 @@ h3 {
   top: 0;
   left: 50%;
   transform: translate(-50%, -100%);
-  width: 20vw;
+  width: 70vw;
   z-index: 100;
   pointer-events: none;
 }
@@ -603,6 +617,10 @@ h3 {
     align-items: center;
   }
 
+  .soccer__goal {
+    width: 20vw;
+  }
+
   .individual {
     background-image: url("./assets/indiv.jpg");
     background-size: cover;
@@ -755,63 +773,4 @@ h3 {
   }
 }
 
-/* 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
