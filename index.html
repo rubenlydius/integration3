@@ -11,13 +11,14 @@
     <title>Dirk Bikkembergs</title>
   </head>
   <body>
+    <img class="soccer__goal" src="./src/assets/soccer_goal.png" alt="soccer goal">
     
     <section class="intro">
       <div class="header">
         <a href="https://www.momu.be/en/">
         <img class="logo" src="./src/assets/logo.png" alt="logo">
         </a>
-        <a class="button" href="https://www.momu.be/en/collection-stories">all stories</a>
+        <a class="button nav__item" href="https://www.momu.be/en/collection-stories">all stories</a>
       </div>
       <h1 class="intro__title">The uniforms of <span class="letter__spacing"><br>Dirk Bikkembergs</span></h1>
       <div class="intro__images">
@@ -108,6 +109,7 @@
             He realized that youth culture had changed; instead of the spaced-out party animals of the 90s, young people wanted to
             be healthy, tanned, and disciplined. He saw the sportsman as the only muse who could make his clothes truly live,
             famously calling professional fashion models "dead meat”.</p>
+            <p class="kickit__text">See the ball? KICK IT </p>
           </div>
         <div class="athlete__soccer">
           <div class="athlete__soccer__text">
@@ -136,6 +138,7 @@
           <img class="soccer__white-rings" src="./src/assets/soccer_white_rings.png" alt="white football rings graphic">
           <img class="soccer__blue-rings" src="./src/assets/soccer_blue_rings.png" alt="blue football rings graphic">
         </div>
+        <img class="soccer__ball" src="./src/assets/soccer_ball.png" alt="soccer ball">
         </div>
       </section>
       <section class="individual">
@@ -150,7 +153,32 @@
         Uniqlo. He finds more genuine satisfaction in seeing a regular person on the street wearing his designs than in trying
         to impress the fashion elite. He remains a profound optimist, living entirely in the present moment and moving forward
         with the conviction that once a page in his life is turned, it stays turned forever.</p>
+          <button class="button puzzle-trigger puzzle-overlay__buttons">Find Dirk</button>
       </section>
+
+      <!-- Puzzle Overlay -->
+      <div class="puzzle-overlay" id="puzzleOverlay">
+        <div class="puzzle-overlay__content">
+          <button class="puzzle-overlay__close" id="puzzleClose">&times;</button>
+          <div class="puzzle-overlay__image-container">
+            <picture>
+              <source media="(min-width: 40rem)" srcset="./src/assets/puzzleL.png">
+              <img class="puzzle-overlay__image" src="./src/assets/puzzleP.png" alt="Find Dirk puzzle">
+            </picture>
+            <canvas class="puzzle-overlay__canvas" id="puzzleCanvas"></canvas>
+          </div>
+          <div class="puzzle-overlay__buttons">
+            <button class="button puzzle-overlay__undo" id="puzzleUndo">Undo</button>
+            <button class="button puzzle-overlay__reset" id="puzzleReset">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- <section>
+        <div>
+          <img src="./src/assets/" alt="">
+        </div>
+      </section> -->
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
