@@ -13,14 +13,6 @@ html {
   max-width: 100vw;
 }
 
-a {
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: red;
-}
-
 body {
   color: var(--color-black);
   background-color: var(--color-white);
@@ -41,6 +33,36 @@ img {
   position: relative;
   z-index: 1;
   margin: 0.5rem 0.5rem 0 0.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__item {
+  margin: 1rem;
+}
+
+.button {
+  border: 0.25rem solid var(--color-blue);
+  padding: 0.5rem 1rem;
+
+  font-family: komu-b, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  color: var(--color-black);
+  /* margin: 2rem; */
+  text-decoration: none;
+  width: fit-content;
+}
+
+.button:hover {
+  background-color: var(--color-blue);
+  color: var(--color-white);
 }
 
 .intro {
@@ -114,6 +136,16 @@ h1 {
   margin-top: -19.5vw;
 }
 
+.intro__text__bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket__button {
+  width: fit-content;
+  margin: 3rem auto;
+}
+
 p {
   font-family: logic-monospace, mono;
   font-weight: 400;
@@ -148,7 +180,7 @@ h2 {
 }
 
 .soldier h2 {
-  margin-bottom: 1rem;
+  margin: 4rem 0 -2rem 0;
 }
 
 .soldier__content {
@@ -178,6 +210,7 @@ h2 {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  align-self: end;
 }
 
 h3 {
@@ -195,19 +228,40 @@ h3 {
   margin-bottom: 5rem;
 }
 
-.boots > img {
-  margin-bottom: -5rem;
+.boots__image-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.boots__image {
+  display: block;
+  width: 100%;
+}
+
+.laces {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(50%, -50%);
+  width: 30%;
+  height: auto;
+  z-index: 10;
+}
+
+.boots__image-wrapper {
+  margin-bottom: -7rem;
 }
 
 .fightclub {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto auto auto;
   align-items: start;
   gap: 1rem;
 }
 
-.fightclub > img {
+.fightclub > img:first-child {
   grid-column: 1;
   grid-row: 1;
 }
@@ -225,6 +279,31 @@ h3 {
   grid-column: 1 / -1;
   grid-row: 2;
   padding-top: 1rem;
+}
+
+.fightclub__dirk {
+  margin: 10rem 0 10rem 0;
+  width: 170vw;
+  max-width: none;
+  height: auto;
+}
+
+.fightclub__animation > p {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  opacity: 1;
+}
+
+.fightclub__animation > p .line {
+  overflow: hidden;
+}
+
+.fightclub__animation > p:first-child {
+  margin: 10rem 10vw -10rem 10vw;
+}
+
+.fightclub__animation > p:last-child {
+  margin: -10rem 10vw 15rem 10vw;
 }
 
 .athlete h2 {
@@ -270,8 +349,97 @@ h3 {
   grid-row: 2;
 }
 
-.athlete__soccer > img {
+.athlete__grid .kickit__text {
+  grid-column: 1 / -1;
+  grid-row: 3;
+}
+
+.athlete__soccer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  min-height: 100vh;
+  position: relative;
+}
+
+.athlete__soccer > img:not(.soccer__ball) {
   width: 100%;
+}
+
+.athlete__soccer__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 50vh 0;
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 1;
+}
+
+.athlete__soccer__text > div {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.soccer__rings-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  height: 100vh;
+  align-items: flex-end;
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 2;
+}
+
+.soccer__rings-wrapper > * {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.soccer__white-rings {
+  width: 100%;
+  z-index: 1;
+  transform: translate(-3px, 0);
+}
+
+.soccer__blue-rings {
+  width: 100%;
+  z-index: 2;
+}
+
+.soccer__ball {
+  width: 7rem;
+  z-index: 10;
+  cursor: grab;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.soccer__ball:active {
+  cursor: grabbing;
+}
+
+.soccer__goal {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: 20vw;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.explosion-dot {
+  position: absolute;
+  background-color: var(--color-blue);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 @media (min-width: 40rem) {
@@ -313,6 +481,10 @@ h3 {
     margin: 2rem 10vw 4rem 10vw;
   }
 
+  /* .soldier h2{
+    margin: 4rem 0 -2rem 0;
+  } */
+
   .soldier__right {
     display: flex;
     flex-direction: column;
@@ -328,6 +500,7 @@ h3 {
     display: flex;
     flex-direction: row;
     width: 15vw;
+    align-self: flex-start;
   }
 
   .boots {
@@ -344,7 +517,7 @@ h3 {
     margin: 2rem 10vw 4rem 10vw;
   }
 
-  .fightclub > img {
+  .fightclub > img:first-child {
     grid-column: 1;
     grid-row: 1 / 3;
     align-self: start;
@@ -364,9 +537,19 @@ h3 {
     align-self: end;
   }
 
+  .fightclub__dirk {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .fightclub__animation > p {
+    font-size: 3rem;
+    line-height: 4rem;
+  }
+
   .athlete__grid {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto auto auto;
     margin: 2rem 10vw 4rem 10vw;
   }
 
@@ -377,7 +560,7 @@ h3 {
 
   .athlete__grid > div {
     grid-column: 1;
-    grid-row: 1 / 3;
+    grid-row: 1 / 4;
   }
 
   .athlete__grid h3 {
@@ -390,25 +573,47 @@ h3 {
     grid-row: 2;
   }
 
+  .athlete__grid .kickit__text {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
   .athlete__soccer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    align-items: center;
-    margin: 2rem 10vw 4rem 10vw;
+    min-height: 100vh;
+    margin: 0 10vw;
     gap: 3rem;
+  }
+
+  .athlete__soccer__text {
+    grid-column: 1;
+    grid-row: 1;
+    z-index: 1;
+  }
+
+  .athlete__soccer__text > div {
+    padding: 0 2rem;
+  }
+
+  .soccer__rings-wrapper {
+    grid-column: 2;
+    grid-row: 1;
+    align-items: center;
   }
 
   .individual {
     background-image: url("./assets/indiv.jpg");
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 4rem 10vw;
+    padding: 4rem 5vw;
   }
 
   .individual > img {
@@ -423,16 +628,130 @@ h3 {
   }
 
   .individual p {
-    width: 60%;
+    /* width: 60%; */
     max-width: 60%;
     color: var(--color-white);
     background-color: var(--color-black);
-    padding: 1rem;
+    padding: 2vw;
     text-align: left;
   }
 
   .individual p {
     margin-bottom: 2rem;
+  }
+
+  .ticket__button {
+    margin: 3rem 0;
+  }
+}
+
+/* Puzzle Overlay Styles */
+.puzzle-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(27, 27, 27, 0.95);
+  z-index: 1000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.puzzle-overlay.active {
+  display: flex;
+}
+
+.puzzle-overlay__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+}
+
+.puzzle-overlay__close {
+  background: none;
+  border: none;
+  color: var(--color-white);
+  font-size: 3rem;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+  align-self: flex-end;
+  transition: color 0.2s ease;
+}
+
+.puzzle-overlay__close:hover {
+  color: var(--color-blue);
+}
+
+.puzzle-overlay__image-container {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  max-height: calc(100vh - 10rem);
+}
+
+.puzzle-overlay__image {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 10rem);
+  height: auto;
+  object-fit: contain;
+}
+
+.puzzle-overlay__canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+}
+
+.puzzle-overlay__buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.puzzle-overlay__buttons .button {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.puzzle-overlay__buttons .button:hover {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+.puzzle-trigger {
+  cursor: pointer;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  display: block;
+  margin: 1rem auto;
+}
+
+.puzzle-trigger:hover {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+@media (min-width: 40rem) {
+  .puzzle-overlay__image-container {
+    max-height: calc(100vh - 12rem);
+  }
+
+  .puzzle-overlay__image {
+    max-height: calc(100vh - 12rem);
   }
 }
 
