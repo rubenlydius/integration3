@@ -24,17 +24,75 @@ const init = () => {
     yoyo: true,
   });
 
-  // White rings rotation on scroll
-  gsap.to(whiteRings, {
-    rotation: 360,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".soccer__rings-wrapper",
-      start: "top bottom",
-      end: "bottom top",
-      scrub: true,
-    },
-  });
+  // Pin the soccer rings and scroll through text blocks
+  const athleteSoccer = document.querySelector(".athlete__soccer");
+  const soccerText = document.querySelector(".athlete__soccer__text");
+  const ringsWrapper = document.querySelector(".soccer__rings-wrapper");
+
+  if (athleteSoccer && soccerText && ringsWrapper) {
+    // Pin the rings wrapper while scrolling through the text
+    ScrollTrigger.create({
+      trigger: athleteSoccer,
+      start: "top top",
+      end: () => `+=${soccerText.scrollHeight*0.75}`,
+      pin: ringsWrapper,
+      pinSpacing: false,
+      // markers: true,
+    });
+
+    // White rings rotation on scroll
+    gsap.to(whiteRings, {
+      rotation: 360,
+      ease: "none",
+      scrollTrigger: {
+        trigger: athleteSoccer,
+        start: "top top",
+        end: () => `+=${soccerText.scrollHeight}`,
+        scrub: true,
+      },
+    });
+
+    // Animate each text block as it enters/exits the center
+    const textBlocks = gsap.utils.toArray(".athlete__soccer__text > div");
+    textBlocks.forEach((block) => {
+      gsap.fromTo(block, 
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          scrollTrigger: {
+            trigger: block,
+            start: "top 80%",
+            end: "top 30%",
+            scrub: true,
+          },
+        }
+      );
+
+      gsap.to(block, {
+        opacity: 0,
+        y: -50,
+        scrollTrigger: {
+          trigger: block,
+          start: "bottom 70%",
+          end: "bottom 20%",
+          scrub: true,
+        },
+      });
+    });
+  } else {
+    // Fallback: just rotate rings on scroll
+    gsap.to(whiteRings, {
+      rotation: 360,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".soccer__rings-wrapper",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+  }
 
   // Horizontal scroll for fightclub dirk image with jitter
   const fightclubImage = document.querySelector(".fightclub__dirk");
