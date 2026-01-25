@@ -127,13 +127,27 @@ h1 {
 .intro__pattern {
   width: 100%;
   height: 30vw;
-  background-image: url("./assets/pattern1.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
   position: relative;
   z-index: 0;
   margin-top: -19.5vw;
+  overflow: hidden;
+  /* Clip the fixed background to this container */
+  clip-path: inset(0);
+  -webkit-clip-path: inset(0);
+}
+
+/* Pattern background with fixed effect - iOS compatible */
+.intro__pattern::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url("./assets/pattern1.png");
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
 }
 
 .intro__text__bottom {
@@ -213,6 +227,38 @@ h2 {
   align-self: end;
 }
 
+.flip-card {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+}
+
+.flip-card__front,
+.flip-card__back {
+  backface-visibility: hidden;
+}
+
+.flip-card__front img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.flip-card__back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.flip-card__back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 h3 {
   font-family: komu-b, sans-serif;
   font-weight: 400;
@@ -237,6 +283,8 @@ h3 {
 .boots__image {
   display: block;
   width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
 }
 
 .laces {
@@ -362,6 +410,10 @@ h3 {
   position: relative;
 }
 
+.text__hint {
+  font-size: 2rem;
+}
+
 .athlete__soccer > img:not(.soccer__ball) {
   width: 100%;
 }
@@ -430,7 +482,7 @@ h3 {
   top: 0;
   left: 50%;
   transform: translate(-50%, -100%);
-  width: 20vw;
+  width: 70vw;
   z-index: 100;
   pointer-events: none;
 }
@@ -440,6 +492,25 @@ h3 {
   background-color: var(--color-blue);
   border-radius: 50%;
   pointer-events: none;
+}
+
+.individual {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding-bottom: 2rem;
+}
+
+.individual h2 {
+  margin-bottom: 2rem;
+}
+
+.individual p {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.individual > button {
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 40rem) {
@@ -499,7 +570,7 @@ h3 {
   .war__images {
     display: flex;
     flex-direction: row;
-    width: 15vw;
+    /* width: 15vw; */
     align-self: flex-start;
   }
 
@@ -603,6 +674,10 @@ h3 {
     align-items: center;
   }
 
+  .soccer__goal {
+    width: 20vw;
+  }
+
   .individual {
     background-image: url("./assets/indiv.jpg");
     background-size: cover;
@@ -638,6 +713,19 @@ h3 {
 
   .individual p {
     margin-bottom: 2rem;
+  }
+
+  .individual__puzzle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    max-width: 60%;
+  }
+
+  .individual__puzzle p {
+    margin-bottom: 0;
   }
 
   .ticket__button {
@@ -755,63 +843,88 @@ h3 {
   }
 }
 
-/* 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Footer */
+footer {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  padding: 2rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+footer > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.card {
-  padding: 2em;
+footer p {
+  font-family: logic-monospace, mono;
+  margin: 0;
+  width: 70%;
 }
 
-.read-the-docs {
-  color: #888;
+footer .button {
+  color: var(--color-black);
+  background-color: var(--color-white);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.footer__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  align-items: flex-end;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.footer__form input {
+  padding: 1rem 1rem;
+  border: 0.25rem solid var(--color-blue);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-family: logic-monospace, mono;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer__form input::placeholder {
+  color: var(--color-black);
+  opacity: 0.7;
+}
+
+/* Socials 2x2 grid */
+.socials {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 1rem;
+  justify-content: start;
+}
+
+.socials img {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* Desktop footer */
+@media (min-width: 40rem) {
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
   }
-  a:hover {
-    color: #747bff;
+  .footer__form {
+    flex-direction: row;
+    width: auto;
+    align-items: center;
   }
-  button {
-    background-color: #f9f9f9;
+  .footer__form input {
+    width: 20rem;
   }
-} */
+  .socials {
+    grid-template-columns: repeat(2, 1fr);
+    width: auto;
+  }
+}
