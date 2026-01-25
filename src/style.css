@@ -231,6 +231,21 @@ h2 {
   position: relative;
   cursor: pointer;
   width: 100%;
+  animation: glow 2s infinite ease-in-out;
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 var(--color-blue);
+  }
+  50% {
+    box-shadow: 0 0 0 20px var(--color-black);
+  }
+}
+
+.flip-card.clicked {
+  animation: none;
 }
 
 .flip-card__front,
@@ -411,7 +426,8 @@ h3 {
 }
 
 .text__hint {
-  font-size: 2rem;
+  margin-top: 1rem;
+  font-size: 1.75rem;
 }
 
 .athlete__soccer > img:not(.soccer__ball) {
