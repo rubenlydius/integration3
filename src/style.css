@@ -227,6 +227,38 @@ h2 {
   align-self: end;
 }
 
+.flip-card {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+}
+
+.flip-card__front,
+.flip-card__back {
+  backface-visibility: hidden;
+}
+
+.flip-card__front img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.flip-card__back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.flip-card__back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 h3 {
   font-family: komu-b, sans-serif;
   font-weight: 400;
@@ -538,7 +570,7 @@ h3 {
   .war__images {
     display: flex;
     flex-direction: row;
-    width: 15vw;
+    /* width: 15vw; */
     align-self: flex-start;
   }
 

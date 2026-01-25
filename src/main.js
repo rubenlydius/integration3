@@ -444,5 +444,43 @@ const init = () => {
   });
 };
 
+// Flip card animation for war/army images
+const initFlipCards = () => {
+  gsap.utils.toArray(".flip-card").forEach((card) => {
+    // Set up 3D transform style
+    gsap.set(card, {
+      transformStyle: "preserve-3d",
+      transformPerspective: 1000
+    });
+
+    const front = card.querySelector(".flip-card__front");
+    const back = card.querySelector(".flip-card__back");
+
+    // Set initial state - back is rotated 180 degrees
+    gsap.set(back, { rotationY: -180 });
+
+    // Create the flip timeline (paused)
+    const tl = gsap.timeline({ paused: true })
+      .to(front, { duration: 0.6, rotationY: 180, ease: "power2.inOut" })
+      .to(back, { duration: 0.6, rotationY: 0, ease: "power2.inOut" }, 0)
+      .to(card, { z: 50, duration: 0.3, ease: "power2.out" }, 0)
+      .to(card, { z: 0, duration: 0.3, ease: "power2.in" }, 0.3);
+
+    // Track flipped state
+    let isFlipped = false;
+
+    // Toggle flip on click
+    card.addEventListener("click", () => {
+      if (isFlipped) {
+        tl.reverse();
+      } else {
+        tl.play();
+      }
+      isFlipped = !isFlipped;
+    });
+  });
+};
+
 init();
 initPuzzleOverlay();
+initFlipCards();
