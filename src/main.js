@@ -14,11 +14,11 @@ const noise = (t) => Math.sin(t) * 0.5 + 0.5;
 // Puzzle Overlay Drawing Functionality
 const initPuzzleOverlay = () => {
   const puzzleTrigger = document.querySelector(".puzzle-trigger");
-  const puzzleOverlay = document.getElementById("puzzleOverlay");
-  const puzzleClose = document.getElementById("puzzleClose");
-  const puzzleCanvas = document.getElementById("puzzleCanvas");
-  const puzzleUndo = document.getElementById("puzzleUndo");
-  const puzzleReset = document.getElementById("puzzleReset");
+  const puzzleOverlay = document.querySelector("#puzzleOverlay");
+  const puzzleClose = document.querySelector("#puzzleClose");
+  const puzzleCanvas = document.querySelector("#puzzleCanvas");
+  const puzzleUndo = document.querySelector("#puzzleUndo");
+  const puzzleReset = document.querySelector("#puzzleReset");
   const puzzleImage = document.querySelector(".puzzle-overlay__image");
 
   if (!puzzleTrigger || !puzzleOverlay || !puzzleCanvas) return;
@@ -446,7 +446,9 @@ const init = () => {
 
 // Flip card animation for war/army images
 const initFlipCards = () => {
-  gsap.utils.toArray(".flip-card").forEach((card) => {
+  const allFlipCards = gsap.utils.toArray(".flip-card");
+  
+  allFlipCards.forEach((card) => {
     // Set up 3D transform style
     gsap.set(card, {
       transformStyle: "preserve-3d",
@@ -471,6 +473,11 @@ const initFlipCards = () => {
 
     // Toggle flip on click
     card.addEventListener("click", () => {
+      // Stop glow animation on all flip cards after first click
+      allFlipCards.forEach(flipCard => {
+        flipCard.classList.add('clicked');
+      });
+      
       if (isFlipped) {
         tl.reverse();
       } else {
